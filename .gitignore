@@ -1,4 +1,4 @@
 .idea
 
-bin
-pkg
+go/bin
+go/pkg
