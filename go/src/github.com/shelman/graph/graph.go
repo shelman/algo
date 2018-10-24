@@ -3,6 +3,7 @@ package graph
 type edge struct {
 	from string
 	to string
+	weight int
 }
 
 type Graph struct {
@@ -15,7 +16,11 @@ func (g *Graph) AddNode(nodeId string) {
 }
 
 func (g *Graph) AddEdge(source string, sink string) {
-	g.edges = append(g.edges, edge{source, sink})
+	g.AddWeightedEdge(source, sink, 1)
+}
+
+func (g *Graph) AddWeightedEdge(source string, sink string, weight int) {
+	g.edges = append(g.edges, edge{source, sink, weight})
 }
 
 func (g *Graph) EdgesFrom(source string) []string {
@@ -42,6 +47,10 @@ func (g *Graph) NumEdges() int {
 	return len(g.edges)
 }
 
+func (g *Graph) Nodes() []string {
+	return g.nodes
+}
+
 func (g *Graph) RemoveEdge(source string, sink string) {
 	for i, edge := range g.edges {
 		if edge.from == source && edge.to == sink {
@@ -66,4 +75,13 @@ func (g *Graph) Sources() []string {
 		}
 	}
 	return sources
+}
+
+func (g *Graph) Weight(source string, sink string) int {
+	for _, edge := range g.edges {
+		if edge.from == source && edge.to == sink {
+			return edge.weight
+		}
+	}
+	panic("Edge not found")
 }
