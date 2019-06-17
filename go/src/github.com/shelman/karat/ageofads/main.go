@@ -85,5 +85,5 @@ func main() {
 	//userOne := []string{"/eight.html", "/four.html", "/six.html", "/seven.html", "/one.html"}
 	//userTwo := []string{"/nine.html", "/two.html", "/three.html", "/four.html", "/six.html", "/seven.html"}
 	//fmt.Println(longestCommonTrail(userOne, userTwo))
-	
+
 }
